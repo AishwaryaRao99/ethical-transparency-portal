@@ -38,7 +38,4 @@ This project serves both as a **portfolio project** and a **comprehensive backen
 
 ## ⚙️ Getting Started
 
-### 1️⃣ Clone the repository
-```bash
-git clone https://github.com/<your-username>/ethical-transparency-portal.git
-cd ethical-transparency-portal
+
