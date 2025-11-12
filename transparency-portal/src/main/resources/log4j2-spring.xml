@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration monitorInterval="30">
+    <Properties>
+        <Property name="LOG_PATTERN">%d{yyyy-MM-dd HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n</Property>
+        <Property name="LOG_FILE">logs/app.log</Property>
+    </Properties>
+
+    <Appenders>
+        <!-- Dev profile: File appender -->
+        <SpringProfile name="dev">
+            <File name="FileAppender" fileName="${LOG_FILE}">
+                <PatternLayout pattern="${LOG_PATTERN}"/>
+            </File>
+        </SpringProfile>
+        <!-- Prod profile: Console appender -->
+        <SpringProfile name="prod">
+            <Console name="ConsoleAppender" target="SYSTEM_OUT">
+                <PatternLayout pattern="${LOG_PATTERN}"/>
+            </Console>
+        </SpringProfile>
+    </Appenders>
+
+    <Loggers>
+        <Root level="info">
+            <!-- Dev profile: use FileAppender -->
+            <SpringProfile name="dev">
+                <AppenderRef ref="FileAppender"/>
+            </SpringProfile>
+            <!-- Prod profile: use ConsoleAppender -->
+            <SpringProfile name="prod">
+                <AppenderRef ref="ConsoleAppender"/>
+            </SpringProfile>
+        </Root>
+    </Loggers>
+</Configuration>
