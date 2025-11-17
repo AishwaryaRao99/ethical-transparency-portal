@@ -11,7 +11,7 @@ server:
 spring:
   application:
     name: transparency-portal
-    profile: 
+  profiles: 
       active: dev
   servlet:
     multipart:
