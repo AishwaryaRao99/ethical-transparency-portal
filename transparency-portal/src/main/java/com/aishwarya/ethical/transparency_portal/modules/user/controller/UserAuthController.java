@@ -14,6 +14,11 @@ public class UserAuthController {
 	public UserAuthController(UserService userService) {
 		this.userService = userService;
 	}
+	@GetMapping("/test")
+	public String testOutput() {
+		return "Test output from UserAuthController";
+	}
+	
 	
 	@GetMapping("/{id}")
 	public String getUser(@PathVariable Long id) {

@@ -17,16 +17,16 @@ import lombok.extern.slf4j.Slf4j;
 public class GlobalExceptionHandler {
 
 	// ---------- 1. Handles all custom ApiException types ----------
-	@ExceptionHandler(ApiException.class)
-	public ResponseEntity<ErrorResponse> handleApiException(ApiException ex, HttpServletRequest request) {
-		log.error("API Exception: {} - {}", ex.getErrorCode(), ex.getMessage());
-		ErrorCode code = ex.getErrorCode();
-
-		ErrorResponse body = new ErrorResponse(code.name(), ex.getMessage(), code.getStatus().value(),
-				request.getRequestURI(), LocalDateTime.now(), null);
-
-		return ResponseEntity.status(code.getStatus()).body(body);
-	}
+//	@ExceptionHandler(ApiException.class)
+//	public ResponseEntity<ErrorResponse> handleApiException(ApiException ex, HttpServletRequest request) {
+//		log.error("API Exception: {} - {}", ex.getErrorCode(), ex.getMessage());
+//		ErrorCode code = ex.getErrorCode();
+//
+//		ErrorResponse body = new ErrorResponse(code.name(), ex.getMessage(), code.getStatus().value(),
+//				request.getRequestURI(), LocalDateTime.now(), null);
+//
+//		return ResponseEntity.status(code.getStatus()).body(body);
+//	}
 
 	// ---------- 2. Validation errors ----------
 	@ExceptionHandler(MethodArgumentNotValidException.class)
