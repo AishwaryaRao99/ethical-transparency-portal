@@ -2,6 +2,7 @@ package com.aishwarya.ethical.transparency_portal.exception_handling;
 
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Optional;
 
 import org.slf4j.MDC;
 import org.springframework.http.ResponseEntity;
@@ -17,16 +18,24 @@ import lombok.extern.slf4j.Slf4j;
 public class GlobalExceptionHandler {
 
 	// ---------- 1. Handles all custom ApiException types ----------
-//	@ExceptionHandler(ApiException.class)
-//	public ResponseEntity<ErrorResponse> handleApiException(ApiException ex, HttpServletRequest request) {
-//		log.error("API Exception: {} - {}", ex.getErrorCode(), ex.getMessage());
-//		ErrorCode code = ex.getErrorCode();
-//
-//		ErrorResponse body = new ErrorResponse(code.name(), ex.getMessage(), code.getStatus().value(),
-//				request.getRequestURI(), LocalDateTime.now(), null);
-//
-//		return ResponseEntity.status(code.getStatus()).body(body);
-//	}
+	
+	@ExceptionHandler(ApiException.class)
+	public ResponseEntity<ApiExceptionResponse> handleApiException(ApiException ex,  HttpServletRequest request) {
+
+		String traceId =  Optional.ofNullable(MDC.get("traceId")).orElse("N/A");
+
+	    log.error("Handled ApiException: type={}, message={}, traceId={}",
+	            ex.getErrorCode(),
+	            ex.getMessage(),
+	            traceId,
+	            request.getRequestURI()
+	    );
+
+	    return new ResponseEntity<>(
+	            ApiExceptionResponse.from(ex, traceId, request.getRequestURI()),
+	            ex.getErrorCode().getStatus()
+	    );
+	}
 
 	// ---------- 2. Validation errors ----------
 	@ExceptionHandler(MethodArgumentNotValidException.class)
@@ -91,20 +100,5 @@ public class GlobalExceptionHandler {
 		return ResponseEntity.status(code.getStatus()).body(body);
 	}
 	
-	@ExceptionHandler(ApiException.class)
-	public ResponseEntity<ApiExceptionResponse> handleApiException(ApiException ex) {
-
-		String traceId = MDC.get("traceId");
-
-	    log.error("Handled ApiException: type={}, message={}, traceId={}",
-	            ex.getErrorCode(),
-	            ex.getMessage(),
-	            traceId
-	    );
-
-	    return new ResponseEntity<>(
-	            ApiExceptionResponse.from(ex, traceId),
-	            ex.getErrorCode().getStatus()
-	    );
-	}
+	
 }
