@@ -12,7 +12,7 @@ import com.aishwarya.ethical.transparency_portal.modules.user.service.UserServic
 import jakarta.validation.Valid;
 
 @RestController
-@RequestMapping("/api/v1/users")
+
 public class UserController {
 	public UserController(UserService userService) {
 	}
