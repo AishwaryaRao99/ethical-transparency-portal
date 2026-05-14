@@ -7,6 +7,8 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import java.util.Set;
 
+import java.util.List;
+
 @Entity
 @Table(name = "products")
 @Getter
@@ -20,6 +22,9 @@ public class ProductModel {
     private Long id;
 
     private String productName;
+    private String productImageUrl;
+    private String productUrl;
+    private String brand;
     private String productDescription;
     private Double price;
     private Integer stockQuantity;
@@ -42,5 +47,20 @@ public class ProductModel {
     @ElementCollection(targetClass = Certification.class)
     @Enumerated(EnumType.STRING)
     private Set<Certification> certifications;
+
+    @ElementCollection
+    @CollectionTable(name = "product_ingredients", joinColumns = @JoinColumn(name = "product_id"))
+    @Column(name = "ingredient")
+    private List<String> productIngredients;
+
+    /**
+     * Constructor for adding product details: product name, brand, product image, and product description.
+     */
+    public ProductModel(String productName, String brand, String productImageUrl, String productDescription) {
+        this.productName = productName;
+        this.brand = brand;
+        this.productImageUrl = productImageUrl;
+        this.productDescription = productDescription;
+    }
 
 }
