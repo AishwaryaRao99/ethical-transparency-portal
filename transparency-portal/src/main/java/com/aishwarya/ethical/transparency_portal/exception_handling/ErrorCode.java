@@ -11,7 +11,8 @@ public enum ErrorCode {
 	    INVALID_USER_INPUT("USR_002", "Invalid user input", HttpStatus.BAD_REQUEST),
 	    INTERNAL_ERROR("GEN_001", "Internal server error", HttpStatus.INTERNAL_SERVER_ERROR),
 	    UNAUTHORIZED("AUTH_001", "Unauthorized access", HttpStatus.UNAUTHORIZED),
-	    CONFLICT("GEN_002", "Conflict occurred", HttpStatus.CONFLICT);
+	    CONFLICT("GEN_002", "Conflict occurred", HttpStatus.CONFLICT), 
+	    PRODUCT_NOT_FOUND("PRD_001", "Product not found", HttpStatus.NOT_FOUND);
 
 	    private final String code;     
 	    private final String message;
