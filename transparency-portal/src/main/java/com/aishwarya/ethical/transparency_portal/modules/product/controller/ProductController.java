@@ -9,7 +9,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.aishwarya.ethical.transparency_portal.modules.product.model.ProductModel;
+import com.aishwarya.ethical.transparency_portal.modules.product.dto.ProductDTO;
+import com.aishwarya.ethical.transparency_portal.modules.product.model.ProductCategory;
 import com.aishwarya.ethical.transparency_portal.modules.product.service.ProductService;
 //import org.springframework.security.access.prepost.PreAuthorize;
 
@@ -23,44 +24,47 @@ public class ProductController {
 		this.productService = productService;
 	}
 
-//	 // This is a placeholder for the ProductController. 
-//	 // You can implement CRUD operations for products here.	
-//	@RequestMapping("/search")
-//	public List<String> searchProduct(@RequestParam String query) {
-//		// Implement search logic here
-//		//return new APIResponse("Search results for: " + query);
-//		  // Example response
-//        return List.of(
-//                "Result for: " + query,
-//                "Another result for: " + query,
-//                "Sample item"
-//        );
-//	}	
 
 	/**
-	 * Get all products (secured, authenticated users only).
+	 * Get all product categories for UI Home screen.
+	 */
+	@GetMapping("/categories")
+	public List<ProductCategory> getAllCategories() {
+		return productService.getAllCategories();
+	}
+
+	/**
+	 * Get all products by category (DTO, secure, for UI category click).
+	 */
+	@GetMapping("/by-category")
+	public List<ProductDTO> getProductsByCategory(@RequestParam String category) {
+		return productService.getProductsByCategory(category);
+	}
+
+	/**
+	 * Get all products (DTO, secure, authenticated users only).
 	 */
 	@GetMapping("/get-all-products")
 	// @PreAuthorize("isAuthenticated()")
-	public List<ProductModel> getAllProducts() {
+	public List<ProductDTO> getAllProducts() {
 		return productService.getAllProducts();
 	}
 
 	/**
-	 * Search products by name (secured, authenticated users only).
+	 * Search products by name (DTO, secure, authenticated users only).
 	 */
 	@GetMapping("/search")
 	// @PreAuthorize("isAuthenticated()")
-	public List<ProductModel> searchProductsByName(@RequestParam String name) {
+	public List<ProductDTO> searchProductsByName(@RequestParam String name) {
 		return productService.searchProductsByName(name);
 	}
 
 	/**
-	 * Get product by ID (secured, authenticated users only).
+	 * Get product by ID (DTO, secure, authenticated users only).
 	 */
 	@GetMapping("/{id}")
 	// @PreAuthorize("isAuthenticated()")
-	public ProductModel getProductById(@PathVariable Long id) {
+	public ProductDTO getProductById(@PathVariable Long id) {
 		return productService.getProductById(id);
 	}
 }

@@ -7,7 +7,7 @@ VALUES
 'https://images.unsplash.com/photo-1618480066690-8457ab2b766e?w=400',
 8.5,
 7.2,
-'Personal Care'
+'Skincare'
 );
 
 INSERT INTO PRODUCTS
@@ -19,7 +19,7 @@ VALUES
 'https://images.unsplash.com/photo-1616986953793-2e6159b78580?w=400',
 9.1,
 8.7,
-'Personal Care'
+'Cleaning'
 );
 
 INSERT INTO PRODUCTS

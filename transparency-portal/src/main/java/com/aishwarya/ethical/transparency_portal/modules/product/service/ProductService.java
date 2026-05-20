@@ -1,5 +1,8 @@
 package com.aishwarya.ethical.transparency_portal.modules.product.service;
 
+import com.aishwarya.ethical.transparency_portal.modules.product.dto.ProductDTO;
+import com.aishwarya.ethical.transparency_portal.modules.product.model.ProductCategory;
+import java.util.stream.Collectors;
 import com.aishwarya.ethical.transparency_portal.exception_handling.ProductNotFoundException;
 //import org.springframework.security.access.prepost.PreAuthorize;
 import com.aishwarya.ethical.transparency_portal.modules.product.model.ProductModel;
@@ -15,6 +18,68 @@ public class ProductService {
 	public ProductService(ProductRepository productRepository) {
 		this.productRepository = productRepository;
 	}
+	
+	/**
+	 * Returns all available product categories.
+	 * @return List of ProductCategory
+	 */
+	public List<ProductCategory> getAllCategories() {
+		return Arrays.asList(ProductCategory.values());
+	}
+
+	/**
+	 * Returns all products for a given category.
+	 * @param category Category name (case-insensitive)
+	 * @return List of ProductDTO
+	 */
+	public List<ProductDTO> getProductsByCategory(String category) {
+		if (category == null || category.trim().isEmpty()) {
+			throw new IllegalArgumentException("Category must not be empty.");
+		}
+		ProductCategory cat;
+		try {
+			cat = ProductCategory.valueOf(category.trim().toUpperCase());
+		} catch (IllegalArgumentException e) {
+			throw new ProductNotFoundException("Invalid category: " + category);
+		}
+		List<ProductModel> products = productRepository.findByCategory(cat);
+		if (products == null || products.isEmpty()) {
+			throw new ProductNotFoundException("No products found for category: " + category);
+		}
+		return products.stream().map(this::toDTO).collect(Collectors.toList());
+	}
+
+	/**
+	 * Maps ProductModel to ProductDTO.
+	 */
+	private ProductDTO toDTO(ProductModel model) {
+		if (model == null) return null;
+		return new ProductDTO(
+				model.getId(),
+				model.getProductName(),
+				model.getDescription(),
+				model.getImageUrl(),
+				model.getEthicalScore(),
+				model.getTransparencyScore(),
+				model.getCategory()
+		);
+	}
+
+	/**
+	 * Maps ProductDTO to ProductModel.
+	 */
+	private ProductModel toModel(ProductDTO dto) {
+		if (dto == null) return null;
+		return new ProductModel(
+				dto.getId(),
+				dto.getProductName(),
+				dto.getDescription(),
+				dto.getImageUrl(),
+				dto.getEthicalScore(),
+				dto.getTransparencyScore(),
+				dto.getCategory()
+		);
+	}
 
 	/**
 	 * Returns all products in the database.
@@ -22,12 +87,12 @@ public class ProductService {
 	 * @return List of ProductModel
 	 */
 	// @PreAuthorize("isAuthenticated()")
-	public List<ProductModel> getAllProducts() {
+	public List<ProductDTO> getAllProducts() {
 		List<ProductModel> products = productRepository.findAll();
 		if (products == null || products.isEmpty()) {
 			throw new ProductNotFoundException("No products found.");
 		}
-		return products;
+		return products.stream().map(this::toDTO).collect(Collectors.toList());
 	}
 
 	/**
@@ -37,7 +102,7 @@ public class ProductService {
 	 * @return List of ProductModel
 	 */
 	// @PreAuthorize("isAuthenticated()")
-	public List<ProductModel> searchProductsByName(String name) {
+	public List<ProductDTO> searchProductsByName(String name) {
 		if (name == null || name.trim().isEmpty()) {
 			throw new IllegalArgumentException("Product name must not be empty.");
 		}
@@ -45,7 +110,7 @@ public class ProductService {
 		if (products == null || products.isEmpty()) {
 			throw new ProductNotFoundException("No products found matching: " + name);
 		}
-		return products;
+		return products.stream().map(this::toDTO).collect(Collectors.toList());
 	}
 
 	/**
@@ -55,12 +120,13 @@ public class ProductService {
 	 * @return ProductModel
 	 */
 	// @PreAuthorize("isAuthenticated()")
-	public ProductModel getProductById(Long id) {
+	public ProductDTO getProductById(Long id) {
 		if (id == null) {
 			throw new IllegalArgumentException("Product ID must not be null.");
 		}
-		return productRepository.findById(id)
+		ProductModel model = productRepository.findById(id)
 				.orElseThrow(() -> new ProductNotFoundException("Product not found with id: " + id));
+		return toDTO(model);
 	}
 
 }

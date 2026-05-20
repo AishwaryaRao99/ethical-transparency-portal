@@ -6,6 +6,9 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
+import jakarta.persistence.Enumerated;
+import jakarta.persistence.EnumType;
+import com.aishwarya.ethical.transparency_portal.modules.product.model.ProductCategory;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -34,6 +37,7 @@ public class ProductModel {
 
 	private double transparencyScore;
 
-	private String category;
+	   @Enumerated(EnumType.STRING)
+	   private ProductCategory category;
 
 }
