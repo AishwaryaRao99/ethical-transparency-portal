@@ -1,7 +1,9 @@
 package com.aishwarya.ethical.transparency_portal.modules.product.service;
 
+import com.aishwarya.ethical.transparency_portal.modules.product.dto.ProductCategoryDTO;
 import com.aishwarya.ethical.transparency_portal.modules.product.dto.ProductDTO;
 import com.aishwarya.ethical.transparency_portal.modules.product.model.ProductCategory;
+
 import java.util.stream.Collectors;
 import com.aishwarya.ethical.transparency_portal.exception_handling.ProductNotFoundException;
 //import org.springframework.security.access.prepost.PreAuthorize;
@@ -26,6 +28,14 @@ public class ProductService {
 	public List<ProductCategory> getAllCategories() {
 		return Arrays.asList(ProductCategory.values());
 	}
+
+	/**
+	 * Returns all available product categories with their icons.
+	 * @return List of ProductCategoryDTO
+	 */
+	public List<ProductCategoryDTO> getAllCategoriesWithIcons() {
+        return ProductCategory.getAllWithIcons();
+    }
 
 	/**
 	 * Returns all products for a given category.
@@ -59,25 +69,10 @@ public class ProductService {
 				model.getProductName(),
 				model.getDescription(),
 				model.getImageUrl(),
+				model.getBrand(),
 				model.getEthicalScore(),
 				model.getTransparencyScore(),
 				model.getCategory()
-		);
-	}
-
-	/**
-	 * Maps ProductDTO to ProductModel.
-	 */
-	private ProductModel toModel(ProductDTO dto) {
-		if (dto == null) return null;
-		return new ProductModel(
-				dto.getId(),
-				dto.getProductName(),
-				dto.getDescription(),
-				dto.getImageUrl(),
-				dto.getEthicalScore(),
-				dto.getTransparencyScore(),
-				dto.getCategory()
 		);
 	}
 
@@ -89,7 +84,7 @@ public class ProductService {
 	// @PreAuthorize("isAuthenticated()")
 	public List<ProductDTO> getAllProducts() {
 		List<ProductModel> products = productRepository.findAll();
-		if (products == null || products.isEmpty()) {
+		if (products.isEmpty()) {
 			throw new ProductNotFoundException("No products found.");
 		}
 		return products.stream().map(this::toDTO).collect(Collectors.toList());

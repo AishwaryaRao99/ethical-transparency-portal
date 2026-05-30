@@ -2,7 +2,6 @@ package com.aishwarya.ethical.transparency_portal.modules.user.controller;
 
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.aishwarya.ethical.transparency_portal.exception_handling.BadRequestException;

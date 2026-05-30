@@ -13,6 +13,7 @@ public class ProductDTO {
     private String productName;
     private String description;
     private String imageUrl;
+    private String brand;
     private double ethicalScore;
     private double transparencyScore;
     private ProductCategory category;

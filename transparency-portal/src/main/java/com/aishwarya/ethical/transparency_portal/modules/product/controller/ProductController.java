@@ -9,8 +9,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.aishwarya.ethical.transparency_portal.modules.product.dto.ProductCategoryDTO;
 import com.aishwarya.ethical.transparency_portal.modules.product.dto.ProductDTO;
-import com.aishwarya.ethical.transparency_portal.modules.product.model.ProductCategory;
 import com.aishwarya.ethical.transparency_portal.modules.product.service.ProductService;
 //import org.springframework.security.access.prepost.PreAuthorize;
 
@@ -26,11 +26,12 @@ public class ProductController {
 
 
 	/**
-	 * Get all product categories for UI Home screen.
+	 * Get all product categories for UI Home screen, with their icons.
+	 * @return List of ProductCategoryDTO
 	 */
 	@GetMapping("/categories")
-	public List<ProductCategory> getAllCategories() {
-		return productService.getAllCategories();
+	public List<ProductCategoryDTO> getAllCategories() {
+		return productService.getAllCategoriesWithIcons();
 	}
 
 	/**
