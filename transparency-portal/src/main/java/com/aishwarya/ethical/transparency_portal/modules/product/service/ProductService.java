@@ -90,7 +90,7 @@ public class ProductService {
 		EthicalItem item1 = new EthicalItem();
 		item1.setTitle("No Animal Testing");
 		item1.setDescription("Certified cruelty-free by Leaping Bunny");
-		item1.setIcon("fheart-icon");
+		item1.setIcon("heart-icon");
 
 		EthicalItem item2 = new EthicalItem();
 		item2.setTitle("95% Vegan");
@@ -103,11 +103,11 @@ public class ProductService {
 		item3.setIcon("secure-icon");
 		
 		EthicalItem item4 = new EthicalItem();
-		item3.setTitle("Contains Fragrance");
-		item3.setDescription("May cause irritation in sensitive individuals");
-		item3.setIcon("warning-icon");
+		item4.setTitle("Contains Fragrance");
+		item4.setDescription("May cause irritation in sensitive individuals");
+		item4.setIcon("warning-icon");
 
-		return Arrays.asList(item1, item2, item4);
+		return Arrays.asList(item1, item2, item3, item4);
 	}
 
 	/**

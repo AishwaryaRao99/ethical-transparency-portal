@@ -12,7 +12,7 @@ public enum ProductCategory {
     CLEANING("\uD83D\uDEBF"),    // 🚿
     FASHION("\uD83D\uDC57");     // 👗
     // Add more categories as needed in the future
-
+	
     private final String icon;
 
     ProductCategory(String icon) {
