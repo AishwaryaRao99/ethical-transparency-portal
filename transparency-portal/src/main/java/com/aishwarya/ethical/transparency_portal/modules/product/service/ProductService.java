@@ -7,6 +7,10 @@ import com.aishwarya.ethical.transparency_portal.modules.product.model.EthicalIt
 import com.aishwarya.ethical.transparency_portal.modules.product.model.IngredientItem;
 import com.aishwarya.ethical.transparency_portal.modules.product.model.TransparencyAnalysis;
 import com.aishwarya.ethical.transparency_portal.modules.product.model.ScoreBreakdown;
+import com.aishwarya.ethical.transparency_portal.modules.product.model.EthicalItemEntity;
+import com.aishwarya.ethical.transparency_portal.modules.product.model.IngredientItemEntity;
+import com.aishwarya.ethical.transparency_portal.modules.product.model.TransparencyAnalysisEntity;
+import com.aishwarya.ethical.transparency_portal.modules.product.model.ScoreBreakdownEntity;
 
 import java.util.stream.Collectors;
 import com.aishwarya.ethical.transparency_portal.exception_handling.ProductNotFoundException;
@@ -16,13 +20,16 @@ import com.aishwarya.ethical.transparency_portal.modules.product.repository.Prod
 import org.springframework.stereotype.Service;
 import java.util.Arrays;
 import java.util.List;
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 @Service
 public class ProductService {
 	private final ProductRepository productRepository;
+	private final ObjectMapper objectMapper;
 
 	public ProductService(ProductRepository productRepository) {
 		this.productRepository = productRepository;
+		this.objectMapper = new ObjectMapper();
 	}
 	
 	/**
@@ -64,7 +71,7 @@ public class ProductService {
 	}
 
 	/**
-	 * Maps ProductModel to ProductDTO with static mock data for extended details.
+	 * Maps ProductModel to ProductDTO with dynamic data from database entities.
 	 */
 	private ProductDTO toDTO(ProductModel model) {
 		if (model == null) return null;
@@ -77,101 +84,89 @@ public class ProductService {
 				model.getEthicalScore(),
 				model.getTransparencyScore(),
 				model.getCategory(),
-				getMockEthicalItems(),
-				getMockIngredients(),
-				getMockTransparencyAnalysis()
+				convertEthicalItemsEntityToDTO(model.getEthicalSummary()),
+				convertIngredientsEntityToDTO(model.getIngredients()),
+				convertTransparencyAnalysisEntityToDTO(model.getTransparencyAnalysis())
 		);
 	}
-
+	
 	/**
-	 * Returns mock ethical items for product details page.
+	 * Converts EthicalItemEntity list to EthicalItem list (DTO format).
 	 */
-	private List<EthicalItem> getMockEthicalItems() {
-		EthicalItem item1 = new EthicalItem();
-		item1.setTitle("No Animal Testing");
-		item1.setDescription("Certified cruelty-free by Leaping Bunny");
-		item1.setIcon("heart-icon");
-
-		EthicalItem item2 = new EthicalItem();
-		item2.setTitle("95% Vegan");
-		item2.setDescription("Contains trace amounts of beeswax, but otherwise plant-based");
-		item2.setIcon("tick-icon");
-
-		EthicalItem item3 = new EthicalItem();
-		item3.setTitle("Low Risk Level");
-		item3.setDescription("Contains 1 ingredient flagged for caution (Parfum), but overall low risk");
-		item3.setIcon("secure-icon");
-		
-		EthicalItem item4 = new EthicalItem();
-		item4.setTitle("Contains Fragrance");
-		item4.setDescription("May cause irritation in sensitive individuals");
-		item4.setIcon("warning-icon");
-
-		return Arrays.asList(item1, item2, item3, item4);
+	private List<EthicalItem> convertEthicalItemsEntityToDTO(List<EthicalItemEntity> entities) {
+		if (entities == null || entities.isEmpty()) {
+			return new java.util.ArrayList<>();
+		}
+		return entities.stream().map(entity -> {
+			EthicalItem item = new EthicalItem();
+			item.setTitle(entity.getTitle());
+			item.setDescription(entity.getDescription());
+			item.setIcon(entity.getIcon());
+			return item;
+		}).collect(Collectors.toList());
 	}
-
+	
 	/**
-	 * Returns mock ingredients for product details page.
+	 * Converts IngredientItemEntity list to IngredientItem list (DTO format).
 	 */
-	private List<IngredientItem> getMockIngredients() {
-		IngredientItem ingredient1 = new IngredientItem();
-		ingredient1.setName("Parfum (Fragrance)");
-		ingredient1.setDescription("May cause allergic reactions");														
-		ingredient1.setSafetyStatus("Warning");
-
-		IngredientItem ingredient2 = new IngredientItem();
-		ingredient2.setName("Retinol");
-		ingredient2.setDescription("Powerful but can irritate sensitive skin, especially in high concentrations");
-		ingredient2.setSafetyStatus("Caution");
-
-		IngredientItem ingredient3 = new IngredientItem();
-		ingredient3.setName("Parabens");
-		ingredient3.setDescription("Preservative with hormone-disrupting concerns");
-		ingredient3.setSafetyStatus("Harmful");
-		
-		IngredientItem ingredient4 = new IngredientItem();
-		ingredient4.setName("Aqua (Water)");
-		ingredient4.setDescription("Base ingredient");
-		ingredient4.setSafetyStatus("Safe");
-
-		IngredientItem ingredient5 = new IngredientItem();
-		ingredient5.setName("Glycerin");
-		ingredient5.setDescription("Moisturizing agent that helps retain skin hydration");
-		ingredient5.setSafetyStatus("Safe");
-
-		IngredientItem ingredient6 = new IngredientItem();
-		ingredient6.setName("Niacinamide");
-		ingredient6.setDescription("Vitamin B3, brightening");
-		ingredient6.setSafetyStatus("Safe");
-
-		return Arrays.asList(ingredient4, ingredient5, ingredient6, ingredient1, ingredient2, ingredient3);
+	private List<IngredientItem> convertIngredientsEntityToDTO(List<IngredientItemEntity> entities) {
+		if (entities == null || entities.isEmpty()) {
+			return new java.util.ArrayList<>();
+		}
+		return entities.stream().map(entity -> {
+			IngredientItem item = new IngredientItem();
+			item.setName(entity.getName());
+			item.setDescription(entity.getDescription());
+			item.setSafetyStatus(entity.getSafetyStatus());
+			return item;
+		}).collect(Collectors.toList());
 	}
-
+	
 	/**
-	 * Returns mock transparency analysis for product details page.
+	 * Converts TransparencyAnalysisEntity to TransparencyAnalysis (DTO format).
 	 */
-	private TransparencyAnalysis getMockTransparencyAnalysis() {
-		ScoreBreakdown breakdown = new ScoreBreakdown();
-		breakdown.setIngredientTransparency(95);
-		breakdown.setEthicalCertifications(90);
-		breakdown.setManufacturingInfo(85);
-		breakdown.setSourcingTransparency(80);
-
+	private TransparencyAnalysis convertTransparencyAnalysisEntityToDTO(TransparencyAnalysisEntity entity) {
+		if (entity == null) {
+			return null;
+		}
 		TransparencyAnalysis analysis = new TransparencyAnalysis();
-		analysis.setScoreHighReasons(Arrays.asList(
-			"Complete ingredient list with INCI names provided",
-			"Third-party certifications verified (Leaping Bunny, EWG)",
-			"Manufacturing location and process disclosed",
-			"Sustainability practices clearly documented"
-		));
-		analysis.setImprovementAreas(Arrays.asList(
-			"Contains \"Parfum (Fragrance)\" - a vague ingredient that may hide allergens",
-			"Parabens present - considered controversial by some health organizations"
-		));
-		analysis.setScoreBreakdown(breakdown);
-
+		
+		// Parse JSON strings back to lists
+		try {
+			if (entity.getScoreHighReasonsJson() != null) {
+				List<String> reasons = objectMapper.readValue(
+					entity.getScoreHighReasonsJson(),
+					objectMapper.getTypeFactory().constructCollectionType(List.class, String.class)
+				);
+				analysis.setScoreHighReasons(reasons);
+			}
+			if (entity.getImprovementAreasJson() != null) {
+				List<String> areas = objectMapper.readValue(
+					entity.getImprovementAreasJson(),
+					objectMapper.getTypeFactory().constructCollectionType(List.class, String.class)
+				);
+				analysis.setImprovementAreas(areas);
+			}
+		} catch (Exception e) {
+			// If parsing fails, set empty lists
+			analysis.setScoreHighReasons(new java.util.ArrayList<>());
+			analysis.setImprovementAreas(new java.util.ArrayList<>());
+		}
+		
+		// Convert ScoreBreakdownEntity to ScoreBreakdown
+		if (entity.getScoreBreakdown() != null) {
+			ScoreBreakdown breakdown = new ScoreBreakdown();
+			breakdown.setIngredientTransparency(entity.getScoreBreakdown().getIngredientTransparency());
+			breakdown.setEthicalCertifications(entity.getScoreBreakdown().getEthicalCertifications());
+			breakdown.setManufacturingInfo(entity.getScoreBreakdown().getManufacturingInfo());
+			breakdown.setSourcingTransparency(entity.getScoreBreakdown().getSourcingTransparency());
+			analysis.setScoreBreakdown(breakdown);
+		}
+		
 		return analysis;
 	}
+
+
 
 	/**
 	 * Returns all products in the database.
