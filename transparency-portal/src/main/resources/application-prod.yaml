@@ -1,0 +1,19 @@
+spring:
+  datasource:
+    # 1. Paste your Transaction Pooler URI here (remember the jdbc: prefix)
+    url: jdbc:postgresql://aws-1-ap-southeast-2.pooler.supabase.com:6543/postgres?sslmode=require
+    username: postgres.bwlqcyapewflawzafusn
+    password: supasupaAish98*
+    driver-class-name: org.postgresql.Driver
+
+  jpa:
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+    hibernate:
+      ddl-auto: update
+    # 2. Forces data.sql to run AFTER Hibernate builds/updates tables
+    defer-datasource-initialization: true
+
+  sql:
+    init:
+      # 3. Ensures your data.sql script executes on startup
+      mode: always

@@ -5,7 +5,8 @@ INSERT INTO PRODUCTS (product_name, DESCRIPTION, IMAGE_URL, BRAND, ETHICAL_SCORE
 VALUES ('Burt''s Bees Very Volumizing Pomegranate Shampoo',
 'Natural shampoo made with pomegranate seed oil, free of sulfates and parabens. Made with 99.6% natural ingredients.',
 'https://images.unsplash.com/photo-1556228578-8c89e6adf883?w=500&q=80',
-'Burt''s Bees', 9.1, 9.3, 'SKINCARE');
+'Burt''s Bees', 9.1, 9.3, 'SKINCARE')
+ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO ETHICAL_ITEMS (product_id, title, description, icon) VALUES
 (1, 'No Animal Testing', 'Certified cruelty-free by Leaping Bunny', 'heart-icon'),
@@ -27,11 +28,12 @@ VALUES (1, '["Natural ingredients with full transparency", "Certified by Leaping
 UPDATE PRODUCTS SET transparency_analysis_id = 1 WHERE id = 1;
 
 -- Product 2: CeraVe Moisturizing Cream
-INSERT INTO PRODUCTS (product_name, DESCRIPTION, IMAGE_URL, BRAND, ETHICAL_SCORE, TRANSPARENCY_SCORE, CATEGORY)
-VALUES ('CeraVe Moisturizing Cream',
+INSERT INTO PRODUCTS (product_id, product_name, DESCRIPTION, IMAGE_URL, BRAND, ETHICAL_SCORE, TRANSPARENCY_SCORE, CATEGORY)
+VALUES (2, 'CeraVe Moisturizing Cream',
 'Dermatologist-developed daily moisturizing cream with three essential ceramides and hyaluronic acid. Fragrance-free and non-comedogenic.',
 'https://images.unsplash.com/photo-1616986953793-2e6159b78580?w=400',
-'CeraVe', 8.8, 9.1, 'SKINCARE');
+'CeraVe', 8.8, 9.1, 'SKINCARE')
+ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO ETHICAL_ITEMS (product_id, title, description, icon) VALUES
 (2, 'Dermatologist Approved', 'Tested and recommended by dermatologists', 'doctor-icon'),
@@ -53,11 +55,12 @@ VALUES (2, '["Complete INCI naming of ingredients", "Dermatologist tested and ap
 UPDATE PRODUCTS SET transparency_analysis_id = 2 WHERE id = 2;
 
 -- Product 3: Drunk Elephant C-Firma Fresh Vitamin C Serum
-INSERT INTO PRODUCTS (product_name, DESCRIPTION, IMAGE_URL, BRAND, ETHICAL_SCORE, TRANSPARENCY_SCORE, CATEGORY)
-VALUES ('Drunk Elephant C-Firma Fresh Vitamin C Serum',
+INSERT INTO PRODUCTS (product_id, product_name, DESCRIPTION, IMAGE_URL, BRAND, ETHICAL_SCORE, TRANSPARENCY_SCORE, CATEGORY)
+VALUES (3, 'Drunk Elephant C-Firma Fresh Vitamin C Serum',
 'Potent vitamin C serum designed to brighten the complexion and fight environmental stressors. Clean, cruelty-free beauty.',
 'https://images.unsplash.com/photo-1608571423902-eed4a5ad8108?w=500&q=80',
-'Drunk Elephant', 8.9, 9.4, 'SKINCARE');
+'Drunk Elephant', 8.9, 9.4, 'SKINCARE')
+ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO ETHICAL_ITEMS (product_id, title, description, icon) VALUES
 (3, 'Cruelty-Free Certified', 'Not tested on animals, certified by Leaping Bunny', 'bunny-icon'),
@@ -79,11 +82,12 @@ VALUES (3, '["Comprehensive ingredient list with benefits explained", "Cruelty-f
 UPDATE PRODUCTS SET transparency_analysis_id = 3 WHERE id = 3;
 
 -- Product 4: Dr. Bronner's 18-in-1 Hemp Pure Castile Soap
-INSERT INTO PRODUCTS (product_name, DESCRIPTION, IMAGE_URL, BRAND, ETHICAL_SCORE, TRANSPARENCY_SCORE, CATEGORY)
-VALUES ('Dr. Bronner''s 18-in-1 Hemp Pure Castile Soap',
+INSERT INTO PRODUCTS (product_id, product_name, DESCRIPTION, IMAGE_URL, BRAND, ETHICAL_SCORE, TRANSPARENCY_SCORE, CATEGORY)
+VALUES (4, 'Dr. Bronner''s 18-in-1 Hemp Pure Castile Soap',
 'Multi-purpose, plant-based soap made with organic oils. Fair trade certified, vegan, and completely transparent supply chain.',
 'https://images.unsplash.com/photo-1650964336602-f60274c5a94d?w=500&q=80',
-'Dr. Bronner''s', 9.6, 9.8, 'SKINCARE');
+'Dr. Bronner''s', 9.6, 9.8, 'SKINCARE')
+ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO ETHICAL_ITEMS (product_id, title, description, icon) VALUES
 (4, 'Fair Trade Certified', 'All ingredients sourced through fair trade practices', 'handshake-icon'),
