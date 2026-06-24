@@ -49,7 +49,6 @@ INSERT INTO INGREDIENT_ITEMS (product_id, name, description, safety_status) VALU
 INSERT INTO SCORE_BREAKDOWNS (ingredient_transparency, ethical_certifications, manufacturing_info, sourcing_transparency)
 VALUES (88, 85, 90, 87);
 
-INSERT INTO TRANSPARENCY_ANALYSES (score_breakdown_id, score_high_reasons_json, improvement_areas_json)
 VALUES (2, '["Complete INCI naming of ingredients", "Dermatologist tested and approved", "Manufacturing standards disclosed", "Paraben-free and cruelty-free commitment"]',
 '["Limited information on ingredient sourcing", "Parent company practices could be more transparent"]')
 ON CONFLICT (score_breakdown_id) DO NOTHING;
@@ -120,7 +119,7 @@ UPDATE PRODUCTS SET transparency_analysis_id = 4 WHERE id = 4;
 INSERT INTO PRODUCTS (product_name, DESCRIPTION, IMAGE_URL, BRAND, ETHICAL_SCORE, TRANSPARENCY_SCORE, CATEGORY)
 VALUES ('Fair Trade Certified Organic Coffee',
 'Single-origin organic coffee beans from Ethiopian smallholder farmers. Fair trade certified with full traceability.',
-'http://localhost:8080/transparency-portal/images/products/coffee.jpg',
+'https://truthlabel-backend.onrender.com/transparency-portal/images/products/coffee.jpg',
 'Equal Exchange', 9.3, 9.5, 'FOOD')
 ON CONFLICT (id) DO NOTHING;
 
@@ -148,7 +147,7 @@ UPDATE PRODUCTS SET transparency_analysis_id = 5 WHERE id = 5;
 INSERT INTO PRODUCTS (product_name, DESCRIPTION, IMAGE_URL, BRAND, ETHICAL_SCORE, TRANSPARENCY_SCORE, CATEGORY)
 VALUES ('Organic Raw Almond Butter',
 'Cold-pressed almonds from certified organic orchards. No added sugars, oils, or salt. Verified sustainable sourcing.',
-'http://localhost:8080/transparency-portal/images/products/almond.jpg',
+'https://truthlabel-backend.onrender.com/transparency-portaltransparency-portal/images/products/almond.jpg',
 'Barney Butter', 8.7, 8.9, 'FOOD')
 ON CONFLICT (id) DO NOTHING;
 
@@ -176,7 +175,7 @@ UPDATE PRODUCTS SET transparency_analysis_id = 6 WHERE id = 6;
 INSERT INTO PRODUCTS (product_name, DESCRIPTION, IMAGE_URL, BRAND, ETHICAL_SCORE, TRANSPARENCY_SCORE, CATEGORY)
 VALUES ('Rainforest Alliance Certified Chocolate Bar',
 'Single-origin dark chocolate (72% cacao) from responsibly managed farms. Supports forest conservation.',
-'http://localhost:8080/transparency-portal/images/products/chocolate.jpg',
+'https://truthlabel-backend.onrender.com/transparency-portal/images/products/chocolate.jpg',
 'Tony''s Chocolonely', 9.2, 9.4, 'FOOD')
 ON CONFLICT (id) DO NOTHING;
 
@@ -206,7 +205,7 @@ UPDATE PRODUCTS SET transparency_analysis_id = 7 WHERE id = 7;
 INSERT INTO PRODUCTS (product_name, DESCRIPTION, IMAGE_URL, BRAND, ETHICAL_SCORE, TRANSPARENCY_SCORE, CATEGORY)
 VALUES ('USDA Organic Certified Blueberries',
 'Freshly harvested organic blueberries from family farms with complete supply chain transparency. Non-GMO verified.',
-'http://localhost:8080/transparency-portal/images/products/blueberries.jpg',
+'https://truthlabel-backend.onrender.com/transparency-portal/images/products/blueberries.jpg',
 'Nature''s Harvest', 8.8, 8.7, 'FOOD')
 ON CONFLICT (id) DO NOTHING;
 
@@ -235,7 +234,7 @@ UPDATE PRODUCTS SET transparency_analysis_id = 8 WHERE id = 8;
 INSERT INTO PRODUCTS (product_name, DESCRIPTION, IMAGE_URL, BRAND, ETHICAL_SCORE, TRANSPARENCY_SCORE, CATEGORY)
 VALUES ('Ecos Hypoallergenic All-Purpose Cleaner',
 'Plant-based, non-toxic all-purpose cleaner. Vegan, cruelty-free, and biodegradable. EPA certified Safer Choice product.',
-'http://localhost:8080/transparency-portal/images/products/spray.jpg',
+'https://truthlabel-backend.onrender.com/transparency-portal/images/products/spray.jpg',
 'ECOS', 8.9, 9.2, 'CLEANING')
 ON CONFLICT (id) DO NOTHING;
 
@@ -264,7 +263,7 @@ UPDATE PRODUCTS SET transparency_analysis_id = 9 WHERE id = 9;
 INSERT INTO PRODUCTS (product_name, DESCRIPTION, IMAGE_URL, BRAND, ETHICAL_SCORE, TRANSPARENCY_SCORE, CATEGORY)
 VALUES ('Seventh Generation Free & Clear Laundry Detergent',
 'Hypoallergenic laundry detergent free of dyes and perfumes. Plant-derived ingredients, biodegradable, and cruelty-free.',
-'http://localhost:8080/transparency-portal/images/products/detergent.jpg',
+'https://truthlabel-backend.onrender.com/transparency-portal/images/products/detergent.jpg',
 'Seventh Generation', 9.0, 9.1, 'CLEANING')
 ON CONFLICT (id) DO NOTHING;
 
@@ -293,7 +292,7 @@ UPDATE PRODUCTS SET transparency_analysis_id = 10 WHERE id = 10;
 INSERT INTO PRODUCTS (product_name, DESCRIPTION, IMAGE_URL, BRAND, ETHICAL_SCORE, TRANSPARENCY_SCORE, CATEGORY)
 VALUES ('Nellie''s All Natural Laundry Soda',
 'Zero-waste laundry detergent concentrate made from naturally sourced minerals. Biodegradable and septic safe.',
-'http://localhost:8080/transparency-portal/images/products/spray.jpg',
+'https://truthlabel-backend.onrender.com/transparency-portal/images/products/spray.jpg',
 'Nellie''s', 9.1, 9.0, 'CLEANING')
 ON CONFLICT (id) DO NOTHING;
 
@@ -322,7 +321,7 @@ UPDATE PRODUCTS SET transparency_analysis_id = 11 WHERE id = 11;
 INSERT INTO PRODUCTS (product_name, DESCRIPTION, IMAGE_URL, BRAND, ETHICAL_SCORE, TRANSPARENCY_SCORE, CATEGORY)
 VALUES ('Mrs. Meyer''s Clean Day Multi-Surface Cleaner',
 'Plant-derived formula with essential oils. Cruelty-free, USDA bio-based certified, and made with renewable resources.',
-'http://localhost:8080/transparency-portal/images/products/detergent.jpg',
+'https://truthlabel-backend.onrender.com/transparency-portal/images/products/detergent.jpg',
 'Mrs. Meyer''s Clean Day', 8.7, 8.8, 'CLEANING')
 ON CONFLICT (id) DO NOTHING;
 
@@ -353,7 +352,7 @@ UPDATE PRODUCTS SET transparency_analysis_id = 12 WHERE id = 12;
 INSERT INTO PRODUCTS (product_name, DESCRIPTION, IMAGE_URL, BRAND, ETHICAL_SCORE, TRANSPARENCY_SCORE, CATEGORY)
 VALUES ('Regenerative Organic Certified Denim Jeans',
 'Made from regenerative organic cotton. Fair labor practices verified, transparent supply chain, plastic-free packaging.',
-'http://localhost:8080/transparency-portal/images/products/jeans.jpg',
+'https://truthlabel-backend.onrender.com/transparency-portal/images/products/jeans.jpg',
 'Patagonia', 9.4, 9.6, 'FASHION')
 ON CONFLICT (id) DO NOTHING;
 
@@ -411,7 +410,7 @@ UPDATE PRODUCTS SET transparency_analysis_id = 14 WHERE id = 14;
 INSERT INTO PRODUCTS (product_name, DESCRIPTION, IMAGE_URL, BRAND, ETHICAL_SCORE, TRANSPARENCY_SCORE, CATEGORY)
 VALUES ('Ethically Made Organic Cotton Socks',
 'GOTS certified organic cotton with fair trade certification. Complete transparency from farm to consumer.',
-'http://localhost:8080/transparency-portal/images/products/socks.jpg',
+'https://truthlabel-backend.onrender.com/transparency-portal/images/products/socks.jpg',
 'Everlane', 8.9, 9.2, 'FASHION')
 ON CONFLICT (id) DO NOTHING;
 
@@ -440,7 +439,7 @@ UPDATE PRODUCTS SET transparency_analysis_id = 15 WHERE id = 15;
 INSERT INTO PRODUCTS (product_name, DESCRIPTION, IMAGE_URL, BRAND, ETHICAL_SCORE, TRANSPARENCY_SCORE, CATEGORY)
 VALUES ('Fair Trade Certified Linen Blazer',
 'European-made linen with fair trade certification. Biodegradable materials and ethical labor practices throughout supply chain.',
-'http://localhost:8080/transparency-portal/images/products/blazer.jpg',
+'https://truthlabel-backend.onrender.com/transparency-portal/images/products/blazer.jpg',
 'People Tree', 9.3, 9.5, 'FASHION')
 ON CONFLICT (id) DO NOTHING;
 
