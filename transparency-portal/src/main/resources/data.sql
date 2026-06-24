@@ -49,6 +49,7 @@ INSERT INTO INGREDIENT_ITEMS (product_id, name, description, safety_status) VALU
 INSERT INTO SCORE_BREAKDOWNS (ingredient_transparency, ethical_certifications, manufacturing_info, sourcing_transparency)
 VALUES (88, 85, 90, 87);
 
+INSERT INTO TRANSPARENCY_ANALYSES (score_breakdown_id, score_high_reasons_json, improvement_areas_json)
 VALUES (2, '["Complete INCI naming of ingredients", "Dermatologist tested and approved", "Manufacturing standards disclosed", "Paraben-free and cruelty-free commitment"]',
 '["Limited information on ingredient sourcing", "Parent company practices could be more transparent"]')
 ON CONFLICT (score_breakdown_id) DO NOTHING;
