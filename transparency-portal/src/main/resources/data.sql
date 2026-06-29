@@ -5,8 +5,8 @@ INSERT INTO PRODUCTS (product_name, DESCRIPTION, IMAGE_URL, BRAND, ETHICAL_SCORE
 VALUES ('Burt''s Bees Very Volumizing Pomegranate Shampoo',
 'Natural shampoo made with pomegranate seed oil, free of sulfates and parabens. Made with 99.6% natural ingredients.',
 'https://images.unsplash.com/photo-1556228578-8c89e6adf883?w=500&q=80',
-'Burt''s Bees', 9.1, 9.3, 'SKINCARE')
-ON CONFLICT (id) DO NOTHING;
+'Burt''s Bees', 9.1, 9.3, 'SKINCARE');
+
 
 INSERT INTO ETHICAL_ITEMS (product_id, title, description, icon) VALUES
 (1, 'No Animal Testing', 'Certified cruelty-free by Leaping Bunny', 'heart-icon'),
@@ -23,8 +23,8 @@ VALUES (92, 94, 90, 91);
 
 INSERT INTO TRANSPARENCY_ANALYSES (score_breakdown_id, score_high_reasons_json, improvement_areas_json)
 VALUES (1, '["Natural ingredients with full transparency", "Certified by Leaping Bunny for cruelty-free practices", "Manufacturing location disclosed", "Sustainable sourcing practices documented"]',
-'["Packaging could be more recyclable", "Limited supply chain transparency for raw materials"]')
-ON CONFLICT (score_breakdown_id) DO NOTHING;
+'["Packaging could be more recyclable", "Limited supply chain transparency for raw materials"]');
+
 
 UPDATE PRODUCTS SET transparency_analysis_id = 1 WHERE id = 1;
 
@@ -33,8 +33,8 @@ INSERT INTO PRODUCTS (product_name, DESCRIPTION, IMAGE_URL, BRAND, ETHICAL_SCORE
 VALUES ('CeraVe Moisturizing Cream',
 'Dermatologist-developed daily moisturizing cream with three essential ceramides and hyaluronic acid. Fragrance-free and non-comedogenic.',
 'https://images.unsplash.com/photo-1616986953793-2e6159b78580?w=400',
-'CeraVe', 8.8, 9.1, 'SKINCARE')
-ON CONFLICT (id) DO NOTHING;
+'CeraVe', 8.8, 9.1, 'SKINCARE');
+
 
 INSERT INTO ETHICAL_ITEMS (product_id, title, description, icon) VALUES
 (2, 'Dermatologist Approved', 'Tested and recommended by dermatologists', 'doctor-icon'),
@@ -51,8 +51,8 @@ VALUES (88, 85, 90, 87);
 
 INSERT INTO TRANSPARENCY_ANALYSES (score_breakdown_id, score_high_reasons_json, improvement_areas_json)
 VALUES (2, '["Complete INCI naming of ingredients", "Dermatologist tested and approved", "Manufacturing standards disclosed", "Paraben-free and cruelty-free commitment"]',
-'["Limited information on ingredient sourcing", "Parent company practices could be more transparent"]')
-ON CONFLICT (score_breakdown_id) DO NOTHING;
+'["Limited information on ingredient sourcing", "Parent company practices could be more transparent"]');
+
 
 UPDATE PRODUCTS SET transparency_analysis_id = 2 WHERE id = 2;
 
@@ -61,8 +61,8 @@ INSERT INTO PRODUCTS (product_name, DESCRIPTION, IMAGE_URL, BRAND, ETHICAL_SCORE
 VALUES ('Drunk Elephant C-Firma Fresh Vitamin C Serum',
 'Potent vitamin C serum designed to brighten the complexion and fight environmental stressors. Clean, cruelty-free beauty.',
 'https://images.unsplash.com/photo-1608571423902-eed4a5ad8108?w=500&q=80',
-'Drunk Elephant', 8.9, 9.4, 'SKINCARE')
-ON CONFLICT (id) DO NOTHING;
+'Drunk Elephant', 8.9, 9.4, 'SKINCARE');
+
 
 INSERT INTO ETHICAL_ITEMS (product_id, title, description, icon) VALUES
 (3, 'Cruelty-Free Certified', 'Not tested on animals, certified by Leaping Bunny', 'bunny-icon'),
@@ -79,8 +79,8 @@ VALUES (94, 92, 93, 92);
 
 INSERT INTO TRANSPARENCY_ANALYSES (score_breakdown_id, score_high_reasons_json, improvement_areas_json)
 VALUES (3, '["Comprehensive ingredient list with benefits explained", "Cruelty-free and vegan commitment verified", "Manufacturing process disclosed", "Supply chain transparency documented"]',
-'["Premium pricing limits accessibility", "Packaging could improve sustainability"]')
-ON CONFLICT (score_breakdown_id) DO NOTHING;
+'["Premium pricing limits accessibility", "Packaging could improve sustainability"]');
+
 
 UPDATE PRODUCTS SET transparency_analysis_id = 3 WHERE id = 3;
 
@@ -89,8 +89,8 @@ INSERT INTO PRODUCTS (product_name, DESCRIPTION, IMAGE_URL, BRAND, ETHICAL_SCORE
 VALUES ('Dr. Bronner''s 18-in-1 Hemp Pure Castile Soap',
 'Multi-purpose, plant-based soap made with organic oils. Fair trade certified, vegan, and completely transparent supply chain.',
 'https://images.unsplash.com/photo-1650964336602-f60274c5a94d?w=500&q=80',
-'Dr. Bronner''s', 9.6, 9.8, 'SKINCARE')
-ON CONFLICT (id) DO NOTHING;
+'Dr. Bronner''s', 9.6, 9.8, 'SKINCARE');
+
 
 INSERT INTO ETHICAL_ITEMS (product_id, title, description, icon) VALUES
 (4, 'Fair Trade Certified', 'All ingredients sourced through fair trade practices', 'handshake-icon'),
@@ -109,8 +109,8 @@ VALUES (98, 96, 95, 97);
 
 INSERT INTO TRANSPARENCY_ANALYSES (score_breakdown_id, score_high_reasons_json, improvement_areas_json)
 VALUES (4, '["Complete ingredient transparency with sourcing location", "Fair Trade certified for all ingredients", "USDA Organic certification verified", "Manufacturing practices fully disclosed", "Vegan and cruelty-free certification", "Biodegradable formula"]',
-'["Could provide more detailed sustainability metrics", "Packaging improvements still possible"]')
-ON CONFLICT (score_breakdown_id) DO NOTHING;
+'["Could provide more detailed sustainability metrics", "Packaging improvements still possible"]');
+
 
 UPDATE PRODUCTS SET transparency_analysis_id = 4 WHERE id = 4;
 
@@ -121,8 +121,8 @@ INSERT INTO PRODUCTS (product_name, DESCRIPTION, IMAGE_URL, BRAND, ETHICAL_SCORE
 VALUES ('Fair Trade Certified Organic Coffee',
 'Single-origin organic coffee beans from Ethiopian smallholder farmers. Fair trade certified with full traceability.',
 'http://localhost:8080/transparency-portal/images/products/coffee.jpg',
-'Equal Exchange', 9.3, 9.5, 'FOOD')
-ON CONFLICT (id) DO NOTHING;
+'Equal Exchange', 9.3, 9.5, 'FOOD');
+
 
 INSERT INTO ETHICAL_ITEMS (product_id, title, description, icon) VALUES
 (5, 'Fair Trade Certified', 'Supports smallholder farmers with fair wages', 'handshake-icon'),
@@ -139,8 +139,8 @@ VALUES (91, 95, 88, 96);
 
 INSERT INTO TRANSPARENCY_ANALYSES (score_breakdown_id, score_high_reasons_json, improvement_areas_json)
 VALUES (5, '["Fair Trade certification with farmer direct relationships", "USDA Organic certification", "Farm location and farmer names disclosed", "Roasting process details provided", "Environmental impact metrics shared"]',
-'["Packaging could include more sustainability information", "Could provide pricing breakdown between farmer and company"]')
-ON CONFLICT (score_breakdown_id) DO NOTHING;
+'["Packaging could include more sustainability information", "Could provide pricing breakdown between farmer and company"]');
+
 
 UPDATE PRODUCTS SET transparency_analysis_id = 5 WHERE id = 5;
 
@@ -149,8 +149,8 @@ INSERT INTO PRODUCTS (product_name, DESCRIPTION, IMAGE_URL, BRAND, ETHICAL_SCORE
 VALUES ('Organic Raw Almond Butter',
 'Cold-pressed almonds from certified organic orchards. No added sugars, oils, or salt. Verified sustainable sourcing.',
 'http://localhost:8080/transparency-portal/images/products/almond.jpg',
-'Barney Butter', 8.7, 8.9, 'FOOD')
-ON CONFLICT (id) DO NOTHING;
+'Barney Butter', 8.7, 8.9, 'FOOD');
+
 
 INSERT INTO ETHICAL_ITEMS (product_id, title, description, icon) VALUES
 (6, 'Cold-Pressed Process', 'Preserves nutrients without heating', 'snowflake-icon'),
@@ -167,8 +167,8 @@ VALUES (85, 88, 86, 87);
 
 INSERT INTO TRANSPARENCY_ANALYSES (score_breakdown_id, score_high_reasons_json, improvement_areas_json)
 VALUES (6, '["Organic certification from USDA", "Cold-press manufacturing process disclosed", "Farm locations in California disclosed", "Nutritional benefits clearly labeled"]',
-'["More details on water usage in almond production", "Could expand supply chain transparency"]')
-ON CONFLICT (score_breakdown_id) DO NOTHING;
+'["More details on water usage in almond production", "Could expand supply chain transparency"]');
+
 
 UPDATE PRODUCTS SET transparency_analysis_id = 6 WHERE id = 6;
 
@@ -177,8 +177,8 @@ INSERT INTO PRODUCTS (product_name, DESCRIPTION, IMAGE_URL, BRAND, ETHICAL_SCORE
 VALUES ('Rainforest Alliance Certified Chocolate Bar',
 'Single-origin dark chocolate (72% cacao) from responsibly managed farms. Supports forest conservation.',
 'http://localhost:8080/transparency-portal/images/products/chocolate.jpg',
-'Tony''s Chocolonely', 9.2, 9.4, 'FOOD')
-ON CONFLICT (id) DO NOTHING;
+'Tony''s Chocolonely', 9.2, 9.4, 'FOOD');
+
 
 INSERT INTO ETHICAL_ITEMS (product_id, title, description, icon) VALUES
 (7, 'Rainforest Alliance Certified', 'Forests and wildlife protected', 'leaf-icon'),
@@ -197,8 +197,8 @@ VALUES (90, 94, 91, 93);
 
 INSERT INTO TRANSPARENCY_ANALYSES (score_breakdown_id, score_high_reasons_json, improvement_areas_json)
 VALUES (7, '["Rainforest Alliance certification verified", "Direct relationships with cocoa farmers documented", "Fair Trade pricing model explained", "Environmental impact metrics published", "Forest conservation program details provided"]',
-'["More granular supply chain data could be public", "Packaging materials could be more detailed"]')
-ON CONFLICT (score_breakdown_id) DO NOTHING;
+'["More granular supply chain data could be public", "Packaging materials could be more detailed"]');
+
 
 UPDATE PRODUCTS SET transparency_analysis_id = 7 WHERE id = 7;
 
@@ -207,8 +207,8 @@ INSERT INTO PRODUCTS (product_name, DESCRIPTION, IMAGE_URL, BRAND, ETHICAL_SCORE
 VALUES ('USDA Organic Certified Blueberries',
 'Freshly harvested organic blueberries from family farms with complete supply chain transparency. Non-GMO verified.',
 'http://localhost:8080/transparency-portal/images/products/blueberries.jpg',
-'Nature''s Harvest', 8.8, 8.7, 'FOOD')
-ON CONFLICT (id) DO NOTHING;
+'Nature''s Harvest', 8.8, 8.7, 'FOOD');
+
 
 INSERT INTO ETHICAL_ITEMS (product_id, title, description, icon) VALUES
 (8, 'USDA Organic Certified', 'No synthetic pesticides used', 'certified-icon'),
@@ -224,8 +224,8 @@ VALUES (84, 87, 83, 85);
 
 INSERT INTO TRANSPARENCY_ANALYSES (score_breakdown_id, score_high_reasons_json, improvement_areas_json)
 VALUES (8, '["USDA Organic certification", "Non-GMO Project Verified", "Family farm partnerships disclosed", "Harvest date and handling information provided"]',
-'["Could provide more detailed pesticide-free verification", "Supply chain timing information could be more transparent"]')
-ON CONFLICT (score_breakdown_id) DO NOTHING;
+'["Could provide more detailed pesticide-free verification", "Supply chain timing information could be more transparent"]');
+
 
 UPDATE PRODUCTS SET transparency_analysis_id = 8 WHERE id = 8;
 
@@ -236,8 +236,8 @@ INSERT INTO PRODUCTS (product_name, DESCRIPTION, IMAGE_URL, BRAND, ETHICAL_SCORE
 VALUES ('Ecos Hypoallergenic All-Purpose Cleaner',
 'Plant-based, non-toxic all-purpose cleaner. Vegan, cruelty-free, and biodegradable. EPA certified Safer Choice product.',
 'http://localhost:8080/transparency-portal/images/products/spray.jpg',
-'ECOS', 8.9, 9.2, 'CLEANING')
-ON CONFLICT (id) DO NOTHING;
+'ECOS', 8.9, 9.2, 'CLEANING');
+
 
 INSERT INTO ETHICAL_ITEMS (product_id, title, description, icon) VALUES
 (9, 'EPA Safer Choice Certified', 'Meets EPA environmental and health standards', 'certified-icon'),
@@ -255,8 +255,8 @@ VALUES (87, 91, 88, 89);
 
 INSERT INTO TRANSPARENCY_ANALYSES (score_breakdown_id, score_high_reasons_json, improvement_areas_json)
 VALUES (9, '["EPA Safer Choice certification", "Plant-based ingredient sourcing disclosed", "Biodegradable formula verified", "Manufacturing location transparent", "Vegan certification confirmed"]',
-'["Packaging could be 100% recyclable", "More supply chain details on plant sourcing"]')
-ON CONFLICT (score_breakdown_id) DO NOTHING;
+'["Packaging could be 100% recyclable", "More supply chain details on plant sourcing"]');
+
 
 UPDATE PRODUCTS SET transparency_analysis_id = 9 WHERE id = 9;
 
@@ -265,8 +265,8 @@ INSERT INTO PRODUCTS (product_name, DESCRIPTION, IMAGE_URL, BRAND, ETHICAL_SCORE
 VALUES ('Seventh Generation Free & Clear Laundry Detergent',
 'Hypoallergenic laundry detergent free of dyes and perfumes. Plant-derived ingredients, biodegradable, and cruelty-free.',
 'http://localhost:8080/transparency-portal/images/products/detergent.jpg',
-'Seventh Generation', 9.0, 9.1, 'CLEANING')
-ON CONFLICT (id) DO NOTHING;
+'Seventh Generation', 9.0, 9.1, 'CLEANING');
+
 
 INSERT INTO ETHICAL_ITEMS (product_id, title, description, icon) VALUES
 (10, 'Hypoallergenic', 'Free of dyes, perfumes, and optical brighteners', 'shield-icon'),
@@ -284,8 +284,8 @@ VALUES (89, 92, 89, 90);
 
 INSERT INTO TRANSPARENCY_ANALYSES (score_breakdown_id, score_high_reasons_json, improvement_areas_json)
 VALUES (10, '["Free from synthetic dyes and perfumes", "Cruelty-free and vegan certification", "Biodegradable ingredient list", "Manufacturing processes disclosed", "Plant-sourced ingredients documented"]',
-'["Packaging recyclability could be improved", "More transparent water usage information"]')
-ON CONFLICT (score_breakdown_id) DO NOTHING;
+'["Packaging recyclability could be improved", "More transparent water usage information"]');
+
 
 UPDATE PRODUCTS SET transparency_analysis_id = 10 WHERE id = 10;
 
@@ -294,8 +294,8 @@ INSERT INTO PRODUCTS (product_name, DESCRIPTION, IMAGE_URL, BRAND, ETHICAL_SCORE
 VALUES ('Nellie''s All Natural Laundry Soda',
 'Zero-waste laundry detergent concentrate made from naturally sourced minerals. Biodegradable and septic safe.',
 'http://localhost:8080/transparency-portal/images/products/spray.jpg',
-'Nellie''s', 9.1, 9.0, 'CLEANING')
-ON CONFLICT (id) DO NOTHING;
+'Nellie''s', 9.1, 9.0, 'CLEANING');
+
 
 INSERT INTO ETHICAL_ITEMS (product_id, title, description, icon) VALUES
 (11, 'Zero-Waste Packaging', 'Plastic-free, compostable packaging', 'leaf-icon'),
@@ -313,8 +313,8 @@ VALUES (91, 89, 90, 92);
 
 INSERT INTO TRANSPARENCY_ANALYSES (score_breakdown_id, score_high_reasons_json, improvement_areas_json)
 VALUES (11, '["All ingredients are naturally sourced minerals", "Zero-waste packaging initiative", "Septic system safety verified", "Manufacturing location disclosed", "Environmental impact metrics provided"]',
-'["Limited certification from third parties", "Could provide more ingredient sourcing details"]')
-ON CONFLICT (score_breakdown_id) DO NOTHING;
+'["Limited certification from third parties", "Could provide more ingredient sourcing details"]');
+
 
 UPDATE PRODUCTS SET transparency_analysis_id = 11 WHERE id = 11;
 
@@ -323,8 +323,8 @@ INSERT INTO PRODUCTS (product_name, DESCRIPTION, IMAGE_URL, BRAND, ETHICAL_SCORE
 VALUES ('Mrs. Meyer''s Clean Day Multi-Surface Cleaner',
 'Plant-derived formula with essential oils. Cruelty-free, USDA bio-based certified, and made with renewable resources.',
 'http://localhost:8080/transparency-portal/images/products/detergent.jpg',
-'Mrs. Meyer''s Clean Day', 8.7, 8.8, 'CLEANING')
-ON CONFLICT (id) DO NOTHING;
+'Mrs. Meyer''s Clean Day', 8.7, 8.8, 'CLEANING');
+
 
 INSERT INTO ETHICAL_ITEMS (product_id, title, description, icon) VALUES
 (12, 'USDA Certified Bio-Based', 'Made from renewable plant resources', 'certified-icon'),
@@ -342,8 +342,8 @@ VALUES (84, 86, 85, 83);
 
 INSERT INTO TRANSPARENCY_ANALYSES (score_breakdown_id, score_high_reasons_json, improvement_areas_json)
 VALUES (12, '["USDA bio-based certification", "Plant-derived ingredient list", "Cruelty-free certification verified", "Essential oil sourcing documented"]',
-'["Could provide more transparent packaging information", "Limited environmental impact metrics", "Supply chain transparency could be improved"]')
-ON CONFLICT (score_breakdown_id) DO NOTHING;
+'["Could provide more transparent packaging information", "Limited environmental impact metrics", "Supply chain transparency could be improved"]');
+
 
 UPDATE PRODUCTS SET transparency_analysis_id = 12 WHERE id = 12;
 
@@ -354,8 +354,8 @@ INSERT INTO PRODUCTS (product_name, DESCRIPTION, IMAGE_URL, BRAND, ETHICAL_SCORE
 VALUES ('Regenerative Organic Certified Denim Jeans',
 'Made from regenerative organic cotton. Fair labor practices verified, transparent supply chain, plastic-free packaging.',
 'http://localhost:8080/transparency-portal/images/products/jeans.jpg',
-'Patagonia', 9.4, 9.6, 'FASHION')
-ON CONFLICT (id) DO NOTHING;
+'Patagonia', 9.4, 9.6, 'FASHION');
+
 
 INSERT INTO ETHICAL_ITEMS (product_id, title, description, icon) VALUES
 (13, 'Regenerative Organic Certified', 'Soil health and biodiversity improved through farming', 'globe-icon'),
@@ -373,8 +373,8 @@ VALUES (96, 95, 94, 96);
 
 INSERT INTO TRANSPARENCY_ANALYSES (score_breakdown_id, score_high_reasons_json, improvement_areas_json)
 VALUES (13, '["Regenerative Organic Certification verified", "Complete supply chain transparency published", "Fair trade labor practices documented", "Sustainability reports publicly available", "Carbon footprint tracking disclosed"]',
-'["Premium pricing may limit market accessibility", "Could expand to more product lines"]')
-ON CONFLICT (score_breakdown_id) DO NOTHING;
+'["Premium pricing may limit market accessibility", "Could expand to more product lines"]');
+
 
 UPDATE PRODUCTS SET transparency_analysis_id = 13 WHERE id = 13;
 
@@ -383,8 +383,8 @@ INSERT INTO PRODUCTS (product_name, DESCRIPTION, IMAGE_URL, BRAND, ETHICAL_SCORE
 VALUES ('Sustainable Recycled Polyester T-Shirt',
 'Made from 100% recycled materials with full factory transparency. Carbon-neutral production and fair wages guaranteed.',
 'https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=500&q=80',
-'Reformation', 9.2, 9.3, 'FASHION')
-ON CONFLICT (id) DO NOTHING;
+'Reformation', 9.2, 9.3, 'FASHION');
+
 
 INSERT INTO ETHICAL_ITEMS (product_id, title, description, icon) VALUES
 (14, '100% Recycled Materials', 'Made from post-consumer plastic bottles', 'recycle-icon'),
@@ -402,8 +402,8 @@ VALUES (92, 93, 92, 91);
 
 INSERT INTO TRANSPARENCY_ANALYSES (score_breakdown_id, score_high_reasons_json, improvement_areas_json)
 VALUES (14, '["100% recycled material transparency", "Carbon-neutral certification verified", "Factory locations and conditions disclosed", "Fair wage practices documented", "Environmental impact metrics published"]',
-'["Could expand recycled material sourcing details", "Water usage in dyeing process could be more transparent"]')
-ON CONFLICT (score_breakdown_id) DO NOTHING;
+'["Could expand recycled material sourcing details", "Water usage in dyeing process could be more transparent"]');
+
 
 UPDATE PRODUCTS SET transparency_analysis_id = 14 WHERE id = 14;
 
@@ -412,8 +412,8 @@ INSERT INTO PRODUCTS (product_name, DESCRIPTION, IMAGE_URL, BRAND, ETHICAL_SCORE
 VALUES ('Ethically Made Organic Cotton Socks',
 'GOTS certified organic cotton with fair trade certification. Complete transparency from farm to consumer.',
 'http://localhost:8080/transparency-portal/images/products/socks.jpg',
-'Everlane', 8.9, 9.2, 'FASHION')
-ON CONFLICT (id) DO NOTHING;
+'Everlane', 8.9, 9.2, 'FASHION');
+
 
 INSERT INTO ETHICAL_ITEMS (product_id, title, description, icon) VALUES
 (15, 'GOTS Certified Organic', 'Global Organic Textile Standard certified', 'certified-icon'),
@@ -431,8 +431,8 @@ VALUES (89, 91, 88, 90);
 
 INSERT INTO TRANSPARENCY_ANALYSES (score_breakdown_id, score_high_reasons_json, improvement_areas_json)
 VALUES (15, '["GOTS and Fair Trade certifications verified", "Transparent pricing model disclosed", "Organic cotton sourcing documented", "Manufacturing standards transparent", "Labor conditions disclosed"]',
-'["Could provide more detailed supply chain maps", "Packaging sustainability could be improved"]')
-ON CONFLICT (score_breakdown_id) DO NOTHING;
+'["Could provide more detailed supply chain maps", "Packaging sustainability could be improved"]');
+
 
 UPDATE PRODUCTS SET transparency_analysis_id = 15 WHERE id = 15;
 
@@ -441,8 +441,8 @@ INSERT INTO PRODUCTS (product_name, DESCRIPTION, IMAGE_URL, BRAND, ETHICAL_SCORE
 VALUES ('Fair Trade Certified Linen Blazer',
 'European-made linen with fair trade certification. Biodegradable materials and ethical labor practices throughout supply chain.',
 'http://localhost:8080/transparency-portal/images/products/blazer.jpg',
-'People Tree', 9.3, 9.5, 'FASHION')
-ON CONFLICT (id) DO NOTHING;
+'People Tree', 9.3, 9.5, 'FASHION');
+
 
 INSERT INTO ETHICAL_ITEMS (product_id, title, description, icon) VALUES
 (16, 'Fair Trade Certified', 'Producers and workers paid fair prices', 'handshake-icon'),
@@ -460,7 +460,7 @@ VALUES (93, 94, 95, 94);
 
 INSERT INTO TRANSPARENCY_ANALYSES (score_breakdown_id, score_high_reasons_json, improvement_areas_json)
 VALUES (16, '["Fair Trade certification verified", "European manufacturing standards documented", "Complete material transparency", "Ethical labor practices verified", "Biodegradability confirmed"]',
-'["Limited digital supply chain tracking", "Could provide more detailed sustainability metrics"]')
-ON CONFLICT (score_breakdown_id) DO NOTHING;
+'["Limited digital supply chain tracking", "Could provide more detailed sustainability metrics"]');
+
 
 UPDATE PRODUCTS SET transparency_analysis_id = 16 WHERE id = 16;
