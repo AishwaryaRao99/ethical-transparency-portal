@@ -14,8 +14,21 @@ public class SecurityConfig {
 	@Bean
 	SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
 
-		http.csrf(csrf -> csrf.disable()).authorizeHttpRequests(auth -> auth.anyRequest().authenticated())
-				.httpBasic(Customizer.withDefaults()); //basic authentication for testing purposes, can be replaced with JWT or OAuth2 in production
+		http.csrf(csrf -> csrf.disable())
+				.authorizeHttpRequests(auth -> auth.requestMatchers("/api/v1/productsapi/**").permitAll() 
+						
+						.requestMatchers("/auth/**", "/api/v1/productsapi/**").permitAll()
+
+						.requestMatchers("/admin/**").hasRole("ADMIN")
+
+						.requestMatchers("/client/**").hasRole("CLIENT")
+
+						.requestMatchers("/user/**").hasRole("USER")
+						
+						.anyRequest().authenticated()
+						)
+				.httpBasic(Customizer.withDefaults()); // basic authentication for testing purposes, can be replaced
+														// with JWT or OAuth2 in production
 
 		return http.build();
 	}
