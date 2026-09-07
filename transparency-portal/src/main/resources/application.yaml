@@ -24,9 +24,3 @@ jwt:
 
 oauth2:
   redirect-url: ${OAUTH2_REDIRECT_URL:http://localhost:5173}
-  
-logging:
-  level:
-    org:
-      springframework:
-        security: DEBUG
