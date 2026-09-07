@@ -14,7 +14,7 @@ VALUES ('admin', 'Admin', 'ROLE_ADMIN', 'admin@example.com',
 INSERT INTO users (username, display_name, role, email, password, created_at, updated_at)
 VALUES ('sarah_mitchell', 'Sarah Mitchell', 'ROLE_USER', 'sarah.mitchell@email.com',
         '$2a$12$O718yic3jvorcrL9cmaRjOJWsr0W0UIFirtysqMsM9mrzgwJ1xa0.',
-        DATEADD('MONTH', -17, NOW()), NOW());
+         NOW() - INTERVAL '17 months', NOW());
 
 ----------------------------------------------------- PRODUCTS TABLE -----------------------------------------------------------
 -- ========== SKINCARE PRODUCTS ==========
@@ -495,18 +495,18 @@ UPDATE PRODUCTS SET transparency_analysis_id = 16 WHERE id = 16;
 INSERT INTO REVIEWS (user_id, product_id, rating, comment, created_at)
 VALUES (3, 1, 5,
         'Love how transparent this brand is about their ingredients. Finally found a serum that works!',
-        DATEADD('DAY', -14, NOW()));
+        NOW() - INTERVAL '14 days');
 
 
 INSERT INTO REVIEWS (user_id, product_id, rating, comment, created_at)
 VALUES (3, 2, 5,
         'Amazing product! Cleans well and I love that it''s completely transparent about ingredients.',
-        DATEADD('DAY', -21, NOW()));
+        NOW() - INTERVAL '21 days');
 
 INSERT INTO REVIEWS (user_id, product_id, rating, comment, created_at)
 VALUES (3, 3, 4,
         'Great moisturizer but wish the packaging was more sustainable. Otherwise very happy with it.',
-        DATEADD('MONTH', -1, NOW()));
+        NOW() - INTERVAL '1 month');
 
 
 INSERT INTO REVIEW_TAGS (review_id, tag_order, tags) VALUES (1, 0, 'Effective') ;
@@ -516,6 +516,6 @@ INSERT INTO REVIEW_TAGS (review_id, tag_order, tags) VALUES (2, 1, 'Works Well')
 INSERT INTO REVIEW_TAGS (review_id, tag_order, tags) VALUES (3, 0, 'Hydrating') ; 
 INSERT INTO REVIEW_TAGS (review_id, tag_order, tags) VALUES (3, 1, 'Good Value') ;
 
-INSERT INTO SAVED_PRODUCTS (user_id, product_id, saved_at) VALUES (3, 1, DATEADD('DAY', -13, NOW())) ;
-INSERT INTO SAVED_PRODUCTS (user_id, product_id, saved_at) VALUES (3, 2, DATEADD('DAY', -20, NOW())) ;
-INSERT INTO SAVED_PRODUCTS (user_id, product_id, saved_at) VALUES (3, 3, DATEADD('DAY', -30, NOW())) ;
+INSERT INTO SAVED_PRODUCTS (user_id, product_id, saved_at) VALUES (3, 1, NOW() - INTERVAL '13 days') ;
+INSERT INTO SAVED_PRODUCTS (user_id, product_id, saved_at) VALUES (3, 2, NOW() - INTERVAL '20 days') ;
+INSERT INTO SAVED_PRODUCTS (user_id, product_id, saved_at) VALUES (3, 3, NOW() - INTERVAL '30 days') ;
