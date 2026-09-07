@@ -34,7 +34,6 @@ import lombok.extern.slf4j.Slf4j;
 @RequestMapping("/auth")
 @Validated
 @Slf4j
-@CrossOrigin(origins = { "https:///iriva-frontend.vercel.app" }, allowCredentials = "true")
 public class AuthenticationController {
 
 	private final AuthenticationService authenticationService;

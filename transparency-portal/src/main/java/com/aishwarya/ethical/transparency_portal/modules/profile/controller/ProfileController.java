@@ -31,12 +31,6 @@ import lombok.RequiredArgsConstructor;
 @RequestMapping("/api/v1/profile")
 @Validated
 @RequiredArgsConstructor
-@CrossOrigin(
-	    origins = {
-	        "https:///iriva-frontend.vercel.app"
-	    },
-	    allowCredentials = "true"
-)
 public class ProfileController {
     private final ProfileService profileService;
     private final ProductService productService;

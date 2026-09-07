@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;
@@ -47,10 +48,14 @@ public class SecurityConfig {
 		http.csrf(csrf -> csrf.disable()) //revisit when we have a frontend that can handle CSRF tokens
 				.cors(Customizer.withDefaults())
 				.authorizeHttpRequests(auth -> auth
+						
+						.requestMatchers(HttpMethod.OPTIONS, "/**").permitAll()
 						// ========== PUBLIC ENDPOINTS (No authentication required) ==========
 
 						// Authentication endpoints - Allow unauthenticated login
 						.requestMatchers("/auth/**").permitAll()
+						
+						.requestMatchers("/oauth2/**", "/login/oauth2/**").permitAll()
 
 						// Product API endpoints - Allow public product browsing
 						.requestMatchers("/api/v1/productsapi/**").permitAll()
@@ -119,6 +124,9 @@ public class SecurityConfig {
 
 	    configuration.setAllowedMethods(
 	            List.of("GET", "POST", "PUT", "DELETE", "OPTIONS"));
+	    
+	    configuration.setAllowedHeaders(
+	            List.of("Authorization", "Content-Type", "Accept", "Origin"));
 
 	    configuration.setAllowCredentials(true);
 
