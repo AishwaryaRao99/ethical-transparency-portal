@@ -199,7 +199,7 @@ INSERT INTO PRODUCTS (product_name, DESCRIPTION, IMAGE_URL, BRAND, ETHICAL_SCORE
 VALUES ('Rainforest Alliance Certified Chocolate Bar',
 'Single-origin dark chocolate (72% cacao) from responsibly managed farms. Supports forest conservation.',
 'https://truthlabel-backend.onrender.com/transparency-portal/images/products/chocolate.jpg',
-'Tony''s Chocolonely', 9.2, 9.4, 'FOOD')
+'Tony''s Chocolonely', 9.2, 9.4, 'FOOD');
 
 
 INSERT INTO ETHICAL_ITEMS (product_id, title, description, icon) VALUES
