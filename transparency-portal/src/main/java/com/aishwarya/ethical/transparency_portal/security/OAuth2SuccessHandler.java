@@ -32,7 +32,7 @@ public class OAuth2SuccessHandler extends SimpleUrlAuthenticationSuccessHandler 
 	private final JWTUtil jwtUtil;
 	private final ObjectMapper objectMapper;
 
-	@Value("${oauth2.redirect-url:https://truthlabel-frontend.vercel.app}")
+	@Value("${oauth2.redirect-url:https://iriva-frontend.vercel.app}")
 	private String redirectUrl;
 
 	public OAuth2SuccessHandler(OAuth2UserService oAuth2UserService, JWTUtil jwtUtil, ObjectMapper objectMapper) {

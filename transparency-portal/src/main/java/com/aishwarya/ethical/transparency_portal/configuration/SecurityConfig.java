@@ -115,7 +115,7 @@ public class SecurityConfig {
 	    CorsConfiguration configuration = new CorsConfiguration();
 
 	    configuration.setAllowedOrigins(
-	            List.of("https://truthlabel-frontend.vercel.app"));
+	            List.of("https://iriva-frontend.vercel.app"));
 
 	    configuration.setAllowedMethods(
 	            List.of("GET", "POST", "PUT", "DELETE", "OPTIONS"));
